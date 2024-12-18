@@ -1,0 +1,40 @@
+# Project: SMHealthcare
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ../../SMHealthcare()/base_code/cal_diary.o ../../SMHealthcare()/base_code/cal_diets.o ../../SMHealthcare()/base_code/cal_exercise.o ../../SMHealthcare()/base_code/cal_healthdata.o ../../SMHealthcare()/base_code/main.o
+LINKOBJ  = ../../SMHealthcare()/base_code/cal_diary.o ../../SMHealthcare()/base_code/cal_diets.o ../../SMHealthcare()/base_code/cal_exercise.o ../../SMHealthcare()/base_code/cal_healthdata.o ../../SMHealthcare()/base_code/main.o
+LIBS     = -L"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/lib" -L"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/include" -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/include" -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/05112/새 폴더/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = SMHealthcare.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../../SMHealthcare()/base_code/cal_diary.o: ../../SMHealthcare()/base_code/cal_diary.c
+	$(CC) -c ../../SMHealthcare()/base_code/cal_diary.c -o ../../SMHealthcare()/base_code/cal_diary.o $(CFLAGS)
+
+../../SMHealthcare()/base_code/cal_diets.o: ../../SMHealthcare()/base_code/cal_diets.c
+	$(CC) -c ../../SMHealthcare()/base_code/cal_diets.c -o ../../SMHealthcare()/base_code/cal_diets.o $(CFLAGS)
+
+../../SMHealthcare()/base_code/cal_exercise.o: ../../SMHealthcare()/base_code/cal_exercise.c
+	$(CC) -c ../../SMHealthcare()/base_code/cal_exercise.c -o ../../SMHealthcare()/base_code/cal_exercise.o $(CFLAGS)
+
+../../SMHealthcare()/base_code/cal_healthdata.o: ../../SMHealthcare()/base_code/cal_healthdata.c
+	$(CC) -c ../../SMHealthcare()/base_code/cal_healthdata.c -o ../../SMHealthcare()/base_code/cal_healthdata.o $(CFLAGS)
+
+../../SMHealthcare()/base_code/main.o: ../../SMHealthcare()/base_code/main.c
+	$(CC) -c ../../SMHealthcare()/base_code/main.c -o ../../SMHealthcare()/base_code/main.o $(CFLAGS)

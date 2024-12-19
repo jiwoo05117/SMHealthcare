@@ -22,26 +22,30 @@ static Diet diet_list[MAX_DIETS];
 static int diet_list_size = 0;
 
 
-/*
-    description : read the information in "diets.txt"
-*/
 
+//description : read the information in "diets.txt"
 void loadDiets(const char* DIETFILEPATH) {
-    FILE *file = fopen(DIETFILEPATH, "r");
-    if (file == NULL) {
-        printf("There is no file for diets! \n");
-        return;
-    }
+	FILE*file;
+	
+	file = fopen(DIETFILEPATH, "r"); //open file
+	//Print an error message if the file cannot be opened
+	if (file == NULL) {
+		printf("Unable to open the file\n");
+		return; 
+	}
 
-     // ToCode: to read a list of the diets from the given file
-    while () {
-    	
+    
+     // ToCode: to read a list of the diets from the given file 
+	 while (fscanf(file, "%s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake) == 2) {
+        // Check if the diet list is full
         if (diet_list_size >= MAX_DIETS){
         	break;
 		}
+		diet_list_size++;	 
     }
-    fclose(file);
-}
+
+    fclose(file); //close file
+} 
 
 /*
     description : to enter the selected diet and the total calories intake in the health data
@@ -57,16 +61,28 @@ void inputDiet(HealthData* health_data) {
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
-    
+    for (i = 0; i < diet_list_size; i++) {
+        printf("%d. %s - %d kcal\n", i + 1, diet_list[i].food_name, diet_list[i].calories_intake);
+    }
     
 	// ToCode: to enter the diet to be chosen with exit option
+   printf("Enter the number of the diet you want to choose: ");
+   scanf("%d", &choice);
     
+    // Exit condition
+    if (choice == 0) {
+        printf("Exiting the diet selection.\n");
+        return;
+    }
+    if (choice < 1 || choice > diet_list_size) {
+        printf("Invalid choice. Please try again.\n");
+        return;
+    }
 
     // ToCode: to enter the selected diet in the health data
-    
+    health_data->diet[health_data->diet_count] = diet_list[choice - 1];
+    health_data->diet_count++;
 
     // ToCode: to enter the total calories intake in the health data
-
-
+    health_data->total_calories_intake += diet_list[choice - 1].calories_intake;
 }
-

@@ -39,6 +39,7 @@ Exercise exercises[MAX_EXERCISES];  // exercise history
     int diet_count;                      // number of diets
     int total_calories_burned;           // total calories burned
     int total_calories_intake;           // total calories intake
+    int basal_metabolic_rate;           // basal metabolic rate
 } HealthData;
 
 

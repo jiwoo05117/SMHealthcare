@@ -29,7 +29,7 @@ int exercise_list_size = 0;
 void loadExercises(const char* EXERCISEFILEPATH) {
     FILE *file = fopen(EXERCISEFILEPATH, "r");
     if (file == NULL) {
-        printf("There is no file for exercises! \n");
+        printf("There is no file for exercises\n");
         return;
     }
 
@@ -66,7 +66,7 @@ void inputExercise(HealthData* health_data) {
 
 
     // ToCode: to enter the exercise to be chosen with exit option
-    printf("Enter the number of the exercise to choose (0 to exit): ");
+    printf("Enter the number of the exercise to choose : ");
     scanf("%d", &choice);
     
     // Exit condition
@@ -79,7 +79,7 @@ void inputExercise(HealthData* health_data) {
     }
 
     // To enter the duration of the exercise
-    printf("Enter the duration of the exercise (in minutes): ");
+    printf("Enter the duration of the exercise (minutes): ");
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data

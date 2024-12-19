@@ -29,10 +29,13 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
+    	// Check if the user has reached their daily calorie goal (sum of calories burned + intake)
     	if (health_data.total_calories_burned + health_data.total_calories_intake >= DAILY_CALORIE_GOAL){
-            printf("You have consumed all your calories for today! \n");
+    		 // If the calorie goal has been reached, print a message and prevent further actions
+            printf("You have consumed all your calories for today \n");
 		} 
 		else{
+			// Otherwise, show the system menu options
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");
         	printf("1. Exercise \n");
@@ -40,26 +43,27 @@ int main() {
         	printf("3. Show logged information \n");
         	printf("4. Exit \n");
         	printf("Select the desired number: ");
-        	scanf("%d", &choice);
+        	scanf("%d", &choice); // Take user input for the menu choice
         	printf("=======================================================================\n");
         }
         
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
+            	// If user chooses "1", input exercise data (calories burned) into the health data
             	inputExercise(&health_data);
                 break;
                 
-            case 2:
+            case 2:// If user chooses "2", input diet data (calories intake) into the health data
             	inputDiet(&health_data);
                 break;
                 
-            case 3:
+            case 3: // If user chooses "3", print the logged health data (exercise, diet, calories)
             	printHealthData(&health_data);
                 break;
             
             case 4:
-            	
+            	// If user chooses "4", exit the system
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
                 break;
@@ -68,7 +72,7 @@ int main() {
                 printf("[Error] Invalid option. \n");
                 printf("Please try again! \n");
         }
-    } while (choice != 4);
+    } while (choice != 4);// Keep looping until the user chooses option 4 (Exit)
 
-    return 0;
+    return 0;// Program ends, returning 0 to indicate successful execution
 }

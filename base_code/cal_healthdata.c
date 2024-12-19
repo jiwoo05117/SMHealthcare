@@ -26,7 +26,7 @@
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
-    FILE* file = fopen(HEALTHFILEPATH, "w");
+    FILE* file = fopen(HEALTHFILEPATH, "w"); // Open the health data file in write mode
     if (file == NULL) {
         printf("There is no file for health data.\n");
         return;
